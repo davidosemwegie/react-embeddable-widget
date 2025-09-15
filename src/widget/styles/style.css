@@ -1,5 +1,5 @@
 .widget-container {
-    @apply fixed bottom-5 right-5 w-[300px] h-[400px] bg-white border border-gray-200 rounded-lg shadow-lg z-[9999];
+    @apply fixed bottom-5 right-5 w-[300px] h-[400px] bg-black border border-gray-200 rounded-lg shadow-lg z-[9999] overflow-scroll;
 }
 
 .widget-button {

@@ -35,6 +35,12 @@ async function onReady() {
     root.render(component);
 
     document.body.appendChild(element);
+
+    // Expose the host element (outside of shadow) so we can ignore clicks within the widget
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).__DEALT_WIDGET_SHADOW_HOST__ = element;
+    } catch {}
   } catch (error) {
     console.warn('Widget initialization failed:', error);
   }
