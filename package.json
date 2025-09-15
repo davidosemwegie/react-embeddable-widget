@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && npm run build:widget:production && cp dist/widget.js public/",
+    "build": "tsc -b && vite build && npm run build:widget:production && cp dist/widget.js dist/widget.css public/",
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
