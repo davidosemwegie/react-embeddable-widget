@@ -57,9 +57,11 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
     if (!mounted) return;
     // Best-effort ignore all clicks inside the widget host element if exposed globally
     const ignoreWithin =
-      (window as unknown).__DEALT_WIDGET_SHADOW_HOST__ || null;
+      (window as unknown as { __DEALT_WIDGET_SHADOW_HOST__: unknown })
+        .__DEALT_WIDGET_SHADOW_HOST__ || null;
     const stop = startClickMonitor({
       onEvent: (evt) => addClickLog(evt),
+      // @ts-expect-error - ignoreWithin is not typed
       ignoreWithin,
       maxTextChars: 160,
     });
