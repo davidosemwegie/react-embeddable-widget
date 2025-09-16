@@ -68,22 +68,6 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
     return () => stop();
   }, [mounted, addClickLog]);
 
-  useEffect(() => {
-    if (!mounted) return;
-
-    const fetchRandomPokemon = async () => {
-      const randomId = Math.floor(Math.random() * 1000) + 1;
-      try {
-        await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
-      } catch (error) {
-        console.error('Failed to fetch pokemon:', error);
-      }
-    };
-
-    const interval = setInterval(fetchRandomPokemon, 5000);
-    return () => clearInterval(interval);
-  }, [mounted]);
-
   if (!mounted) {
     return null;
   }
@@ -102,13 +86,6 @@ export function WidgetContainer({ clientKey }: WidgetContainerProps) {
         clearClickLogs,
       }}
     >
-      <h1 className='text-2xl font-bold text-black'> Widget Container </h1>
-      <button
-        className='px-2 py-1 text-sm bg-gray-100 rounded'
-        onClick={() => console.log('Test Click')}
-      >
-        Test Click
-      </button>
       <Widget />
     </WidgetContext.Provider>
   );
